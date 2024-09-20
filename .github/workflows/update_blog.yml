@@ -6,7 +6,7 @@ on:
       branches:
         - main  # 또는 워크플로우를 트리거하고 싶은 브랜치 이름
   schedule:
-    - cron: '0 0 * * *'  # 매일 자정에 실행
+    - cron: '52 2 * * *'  # 테스트용 - 매일 한국 시간으로 오전 11시 52분에 실행 (UTC 오전 2시 52분)
 
 jobs:
   update_blog:
