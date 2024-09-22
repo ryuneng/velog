@@ -18,6 +18,8 @@ if not os.path.exists(posts_dir):
 
 # 레포지토리 로드
 repo = git.Repo(repo_path)
+origin = repo.remote(name='origin')
+origin.set_url(f'https://{secrets.GH_PAT}@github.com/ryuneng/velog.git')
 
 # RSS 피드 파싱
 feed = feedparser.parse(rss_url)
@@ -42,4 +44,4 @@ for entry in feed.entries:
         repo.git.commit('-m', f'Add post: {entry.title}')
 
 # 변경 사항을 깃허브에 푸시
-repo.git.push()
+origin.push()
